@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flame/components.dart';
-import 'package:g_fastrun/components/ember_quest_game.dart';
+import 'package:g_ember_quest_tut/components/ember_quest_game.dart';
 
 //  SpriteAnimationComponent which allows us to define animation as well as position it accordingly in our game world
 

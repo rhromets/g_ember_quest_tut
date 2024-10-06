@@ -12,6 +12,8 @@ import 'package:g_ember_quest_tut/managers/segment_manager.dart';
 
 class EmberQuestGame extends FlameGame {
   late EmberPlayer _ember;
+  late double lastBlockXPosition = 0.0;
+  late UniqueKey lastBlockKey;
   double objectSpeed = 0.0;
 
   @override
@@ -56,6 +58,12 @@ class EmberQuestGame extends FlameGame {
     for (final block in segments[segmentIndex]) {
       switch (block.blockType) {
         case const (GroundBlock):
+          world.add(
+            GroundBlock(
+              gridPosition: block.gridPosition,
+              xOffset: xPositionOffset,
+            ),
+          );
         case const (PlatformBlock):
           add(PlatformBlock(
             gridPosition: block.gridPosition,

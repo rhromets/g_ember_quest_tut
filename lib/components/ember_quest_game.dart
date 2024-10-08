@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
+import 'package:flame/events.dart';
 import 'package:flutter/material.dart';
 import 'package:g_ember_quest_tut/actors/water_enemy.dart';
 import 'package:g_ember_quest_tut/components/ember_player.dart';
@@ -10,7 +11,7 @@ import 'package:g_ember_quest_tut/components/platform_block.dart';
 import 'package:g_ember_quest_tut/components/star.dart';
 import 'package:g_ember_quest_tut/managers/segment_manager.dart';
 
-class EmberQuestGame extends FlameGame {
+class EmberQuestGame extends FlameGame with HasKeyboardHandlerComponents {
   late EmberPlayer _ember;
   late double lastBlockXPosition = 0.0;
   late UniqueKey lastBlockKey;

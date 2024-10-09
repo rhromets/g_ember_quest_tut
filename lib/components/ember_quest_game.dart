@@ -11,7 +11,8 @@ import 'package:g_ember_quest_tut/components/platform_block.dart';
 import 'package:g_ember_quest_tut/components/star.dart';
 import 'package:g_ember_quest_tut/managers/segment_manager.dart';
 
-class EmberQuestGame extends FlameGame with HasKeyboardHandlerComponents {
+class EmberQuestGame extends FlameGame
+    with HasCollisionDetection, HasKeyboardHandlerComponents {
   late EmberPlayer _ember;
   late double lastBlockXPosition = 0.0;
   late UniqueKey lastBlockKey;
@@ -50,8 +51,9 @@ class EmberQuestGame extends FlameGame with HasKeyboardHandlerComponents {
     }
 
     _ember = EmberPlayer(
-      position: Vector2(128, canvasSize.y - 70),
+      position: Vector2(128, canvasSize.y - 128),
     );
+    
     world.add(_ember);
   }
 

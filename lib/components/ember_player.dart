@@ -110,7 +110,15 @@ class EmberPlayer extends SpriteAnimationComponent
   }
 
   @override
-  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
+  void onCollision(
+    Set<Vector2> intersectionPoints,
+    PositionComponent other,
+  ) {
+    if (other is Star) {
+      other.removeFromParent();
+      game.starsCollected++;
+    }
+
     if (other is GroundBlock || other is PlatformBlock) {
       if (intersectionPoints.length == 2) {
         // Calculate the collision normal and separation distance.
@@ -147,6 +155,7 @@ class EmberPlayer extends SpriteAnimationComponent
 
   void hit() {
     if (!hitByEnemy) {
+      game.health--;
       hitByEnemy = true;
     }
     add(

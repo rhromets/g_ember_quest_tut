@@ -10,6 +10,7 @@ import 'package:g_ember_quest_tut/components/ground_block.dart';
 import 'package:g_ember_quest_tut/components/platform_block.dart';
 import 'package:g_ember_quest_tut/components/star.dart';
 import 'package:g_ember_quest_tut/managers/segment_manager.dart';
+import 'package:g_ember_quest_tut/overlays/hud.dart';
 
 class EmberQuestGame extends FlameGame
     with HasCollisionDetection, HasKeyboardHandlerComponents {
@@ -17,6 +18,8 @@ class EmberQuestGame extends FlameGame
   late double lastBlockXPosition = 0.0;
   late UniqueKey lastBlockKey;
   double objectSpeed = 0.0;
+  int starsCollected = 0;
+  int health = 3;
 
   @override
   Color backgroundColor() {
@@ -36,6 +39,7 @@ class EmberQuestGame extends FlameGame
     ]);
 
     camera.viewfinder.anchor = Anchor.topLeft;
+    camera.viewport.add(Hud());
 
     initializeGame();
     return super.onLoad();
@@ -53,7 +57,7 @@ class EmberQuestGame extends FlameGame
     _ember = EmberPlayer(
       position: Vector2(128, canvasSize.y - 128),
     );
-    
+
     world.add(_ember);
   }
 
